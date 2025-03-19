@@ -1,0 +1,18 @@
+.form-wrapper{
+    margin: 30px 30px 30px 0px;
+}
+.form-input {
+    
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    gap: 10px;
+}
+form>p {
+    margin: 0;
+}
+.alert {
+    color: red;
+}

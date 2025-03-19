@@ -27,7 +27,6 @@ export class UsersService {
 
     createUser(user: User) {
         const userIsExisting = this.usersSubject$.value.find(currentUser => currentUser.email === user.email)
-        console.log(userIsExisting)
 
         if (userIsExisting !== undefined) {
             alert('ЮЗЕР С ТАКИМ ЭМЭЙЛОМ УЖЕ СУЩЕСТВУЕТ')

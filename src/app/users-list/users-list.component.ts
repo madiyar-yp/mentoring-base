@@ -14,7 +14,7 @@ export interface User {
         street: string,
         suite: string,
         city: string,
-        zipcod: string,
+        zipcode: string,
         geo: {
             lat: string,
             lng: string
@@ -47,9 +47,7 @@ export class UsersListComponent {
             (response: any) => {
                 this.usersService.setUsers(response)
             }
-        );
-
-        this.usersService.users$.subscribe(users => console.log(users))
+        )
     }
 
     createUser(formData: any) {
@@ -62,8 +60,6 @@ export class UsersListComponent {
                 name: formData.companyName
             }
         })
-        console.log(new Date().getTime())
-        console.log('ДАННЫЕ ФОРМЫ: ', formData)
     }
 
     deleteUser(id: number) {
