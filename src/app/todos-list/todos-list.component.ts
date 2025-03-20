@@ -33,10 +33,10 @@ export class TodosListComponent {
         )
     }
 
-    public createTodo(event: any) {
+    public createTodo(event: Todo) {
         this.todosService.createTodo({
-            userId: event.userId,
             id: new Date().getTime(),
+            userId: event.userId,
             title: event.title,
             completed: event.completed
         })

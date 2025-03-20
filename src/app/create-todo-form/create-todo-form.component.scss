@@ -1,12 +1,12 @@
 .form-wrapper {
     margin: 30px 30px 30px 0px;
 }
-form {
+.form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-form>p {
+.form>p {
     margin: 0;
 }
 .form-input {

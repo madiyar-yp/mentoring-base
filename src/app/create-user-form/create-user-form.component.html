@@ -1,6 +1,6 @@
 <h1>CREATE USER FORM</h1>
 <div class="form-wrapper">
-    <form [formGroup]="formUser" (ngSubmit)="submitForm()">
+    <form [formGroup]="formUser" class="form" (ngSubmit)="submitForm()">
         <p>NAME:</p>
         <input type="text" class="form-input" formControlName="name">
         <div *ngIf="formUser.controls['name'].invalid && (formUser.controls['name'].dirty || formUser.controls['name'].touched)" class="alert">

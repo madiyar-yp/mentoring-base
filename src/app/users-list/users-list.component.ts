@@ -29,6 +29,14 @@ export interface User {
     };
 }
 
+export interface CreateUser {
+    id: number;
+    name: string;
+    email: string;
+    website: string;
+    companyName: string;
+}
+
 @Component({
     selector: 'app-users-list',
     standalone: true,
@@ -50,7 +58,7 @@ export class UsersListComponent {
         )
     }
 
-    createUser(formData: any) {
+    createUser(formData: CreateUser) {
         this.usersService.createUser({
             id: new Date().getTime(),
             name: formData.name,
