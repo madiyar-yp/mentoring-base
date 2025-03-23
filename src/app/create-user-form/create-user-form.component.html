@@ -1,26 +1,34 @@
 <h1>CREATE USER FORM</h1>
 <div class="form-wrapper">
     <form [formGroup]="formUser" class="form" (ngSubmit)="submitForm()">
-        <p>NAME:</p>
-        <input type="text" class="form-input" formControlName="name">
-        <div *ngIf="formUser.controls['name'].invalid && (formUser.controls['name'].dirty || formUser.controls['name'].touched)" class="alert">
-            <div *ngIf="formUser.controls['name'].errors">ИМЯ ВВЕДЕНО НЕПРАВИЛЬНО</div>
-        </div>
-        <p>EMAIL:</p>
-        <input type="text" class="form-input" formControlName="email">
-        <div *ngIf="formUser.controls['email'].invalid && (formUser.controls['email'].dirty || formUser.controls['email'].touched)" class="alert">
-            <div *ngIf="formUser.controls['email'].errors">ПОЧТА ВВЕДЕНО НЕПРАВИЛЬНО</div>
-        </div>
-        <p>WEBSITE</p>
-        <input type="text" class="form-input" formControlName="website">
-        <div *ngIf="formUser.controls['website'].invalid && (formUser.controls['website'].dirty || formUser.controls['website'].touched)" class="alert">
-            <div *ngIf="formUser.controls['website'].errors">САЙТ ВВЕДЕН НЕПРАВИЛЬНО</div>
-        </div>
-        <p>COMPANY NAME:</p>
-        <input type="text" class="form-input" formControlName="companyName">
-        <div *ngIf="formUser.controls['companyName'].invalid && (formUser.controls['companyName'].dirty || formUser.controls['companyName'].touched)" class="alert">
-            <div *ngIf="formUser.controls['companyName'].errors">ИМЯ КОМПАНИИ ВВЕДЕНО НЕПРАВИЛЬНО</div>
-        </div>
-        <button class="form-btn" [disabled]="formUser.invalid">CREATE FORM</button>
+        <mat-form-field class="form-input">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <div *ngIf="formUser.controls['name'].invalid && (formUser.controls['name'].dirty || formUser.controls['name'].touched)" class="alert">
+                <div *ngIf="formUser.controls['name'].errors">Имя введено неправильно</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="form-input">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email">
+            <div *ngIf="formUser.controls['email'].invalid && (formUser.controls['email'].dirty || formUser.controls['email'].touched)" class="alert">
+                <div *ngIf="formUser.controls['email'].errors">Почта введено неправильно</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="form-input">
+            <mat-label>Website</mat-label>
+            <input matInput formControlName="website">
+            <div *ngIf="formUser.controls['website'].invalid && (formUser.controls['website'].dirty || formUser.controls['website'].touched)" class="alert">
+                <div *ngIf="formUser.controls['website'].errors">Сайт введен неправильно</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="form-input">
+            <mat-label>Company name</mat-label>
+            <input matInput formControlName="companyName">
+            <div *ngIf="formUser.controls['companyName'].invalid && (formUser.controls['companyName'].dirty || formUser.controls['companyName'].touched)" class="alert">
+                <div *ngIf="formUser.controls['companyName'].errors">Имя компании введено неправильно</div>
+            </div>
+        </mat-form-field>
+        <button mat-raised-button [disabled]="formUser.invalid">Add User</button>
     </form>
 </div>

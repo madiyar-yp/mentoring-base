@@ -1,21 +1,27 @@
 <h1>CREATE TODO FORM</h1>
 <div class="form-wrapper">
     <form [formGroup]="formTodo" class="form" (ngSubmit)="submitForm()">
-        <p>ТЕКСТ ЗАДАЧИ:</p>
-        <input type="text" class="form-input" formControlName="title">
-        <div *ngIf="formTodo.controls['title'].invalid && (formTodo.controls['title'].dirty || formTodo.controls['title'].touched)" class="alert">
-            <div *ngIf="formTodo.controls['title'].errors">ТЕКСТ ЗАДАЧИ ВВЕДЕНО НЕПРАВИЛЬНО</div>
-        </div>
-        <p>АВТОР ЗАДАЧИ:</p>
-        <input type="text" class="form-input" formControlName="userId">
-        <div *ngIf="formTodo.controls['userId'].invalid && (formTodo.controls['userId'].dirty || formTodo.controls['userId'].touched)" class="alert">
-            <div *ngIf="formTodo.controls['userId'].errors">АВТОР ВВЕДЕН НЕПРАВИЛЬНО</div>
-        </div>
-        <p>ЗАДАЧА РЕШЕНА:</p>
-        <input type="text" class="form-input" formControlName="completed">
-        <div *ngIf="formTodo.controls['completed'].invalid && (formTodo.controls['completed'].dirty || formTodo.controls['completed'].touched)" class="alert">
-            <div *ngIf="formTodo.controls['completed'].errors">ОТВЕТ НЕКОРРЕКТЕН</div>
-        </div>
-        <button [disabled]="formTodo.invalid" class="form-btn">CREATE TODO</button>
+        <mat-form-field class="form-input">
+            <mat-label>Название задачи</mat-label>
+            <input matInput formControlName="title">
+            <div *ngIf="formTodo.controls['title'].invalid && (formTodo.controls['title'].dirty || formTodo.controls['title'].touched)" class="alert">
+                <div *ngIf="formTodo.controls['title'].errors">Текст задачи введено неправильно</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="form-input">
+            <mat-label>Автор задачи</mat-label>
+            <input matInput formControlName="userId">
+            <div *ngIf="formTodo.controls['userId'].invalid && (formTodo.controls['userId'].dirty || formTodo.controls['userId'].touched)" class="alert">
+                <div *ngIf="formTodo.controls['userId'].errors">Автор введен неправильно</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field class="form-input">
+            <mat-label>Задача завершена?</mat-label>
+            <input matInput formControlName="completed">
+            <div *ngIf="formTodo.controls['completed'].invalid && (formTodo.controls['completed'].dirty || formTodo.controls['completed'].touched)" class="alert">
+                <div *ngIf="formTodo.controls['completed'].errors">Ответ некорректен</div>
+            </div>
+        </mat-form-field>
+        <button mat-raised-button [disabled]="formTodo.invalid" class="form-btn">Add Todo</button>
     </form>
 </div>
