@@ -4,12 +4,9 @@
 .form {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 220px;
     gap: 10px;
 }
 .form>p {
     margin: 0;
-}
-.alert {
-    color: red;
 }

@@ -4,30 +4,30 @@
         <mat-form-field class="form-input">
             <mat-label>Name</mat-label>
             <input matInput formControlName="name">
-            <div *ngIf="formUser.controls['name'].invalid && (formUser.controls['name'].dirty || formUser.controls['name'].touched)" class="alert">
-                <div *ngIf="formUser.controls['name'].errors">Имя введено неправильно</div>
-            </div>
+            <mat-error *ngIf="formUser.controls['name'].invalid && (formUser.controls['name'].dirty || formUser.controls['name'].touched)">
+                Имя введено неправильно
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Email</mat-label>
             <input type="email" matInput formControlName="email">
-            <div *ngIf="formUser.controls['email'].invalid && (formUser.controls['email'].dirty || formUser.controls['email'].touched)" class="alert">
-                <div *ngIf="formUser.controls['email'].errors">Почта введено неправильно</div>
-            </div>
+            <mat-error *ngIf="formUser.controls['email'].invalid && (formUser.controls['email'].dirty || formUser.controls['email'].touched)">
+                Почта введено неправильно
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Website</mat-label>
             <input matInput formControlName="website">
-            <div *ngIf="formUser.controls['website'].invalid && (formUser.controls['website'].dirty || formUser.controls['website'].touched)" class="alert">
-                <div *ngIf="formUser.controls['website'].errors">Сайт введен неправильно</div>
-            </div>
+            <mat-error *ngIf="formUser.controls['website'].invalid && (formUser.controls['website'].dirty || formUser.controls['website'].touched)">
+                Сайт введен неправильно
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Company name</mat-label>
             <input matInput formControlName="companyName">
-            <div *ngIf="formUser.controls['companyName'].invalid && (formUser.controls['companyName'].dirty || formUser.controls['companyName'].touched)" class="alert">
-                <div *ngIf="formUser.controls['companyName'].errors">Имя компании введено неправильно</div>
-            </div>
+            <mat-error *ngIf="formUser.controls['companyName'].invalid && (formUser.controls['companyName'].dirty || formUser.controls['companyName'].touched)">
+                Имя компании введено неправильно
+            </mat-error>
         </mat-form-field>
         <button mat-raised-button [disabled]="formUser.invalid">Add User</button>
     </form>

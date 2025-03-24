@@ -4,23 +4,23 @@
         <mat-form-field class="form-input">
             <mat-label>Название задачи</mat-label>
             <input matInput formControlName="title">
-            <div *ngIf="formTodo.controls['title'].invalid && (formTodo.controls['title'].dirty || formTodo.controls['title'].touched)" class="alert">
-                <div *ngIf="formTodo.controls['title'].errors">Текст задачи введено неправильно</div>
-            </div>
+            <mat-error *ngIf="formTodo.controls['title'].invalid && (formTodo.controls['title'].dirty || formTodo.controls['title'].touched)" class="alert">
+                Текст задачи введено неправильно
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Автор задачи</mat-label>
             <input matInput formControlName="userId">
-            <div *ngIf="formTodo.controls['userId'].invalid && (formTodo.controls['userId'].dirty || formTodo.controls['userId'].touched)" class="alert">
-                <div *ngIf="formTodo.controls['userId'].errors">Автор введен неправильно</div>
-            </div>
+            <mat-error *ngIf="formTodo.controls['userId'].invalid && (formTodo.controls['userId'].dirty || formTodo.controls['userId'].touched)" class="alert">
+                Автор введен неправильно
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Задача завершена?</mat-label>
             <input matInput formControlName="completed">
-            <div *ngIf="formTodo.controls['completed'].invalid && (formTodo.controls['completed'].dirty || formTodo.controls['completed'].touched)" class="alert">
-                <div *ngIf="formTodo.controls['completed'].errors">Ответ некорректен</div>
-            </div>
+            <mat-error *ngIf="formTodo.controls['completed'].invalid && (formTodo.controls['completed'].dirty || formTodo.controls['completed'].touched)" class="alert">
+                Ответ некорректен
+            </mat-error>
         </mat-form-field>
         <button mat-raised-button [disabled]="formTodo.invalid" class="form-btn">Add Todo</button>
     </form>
