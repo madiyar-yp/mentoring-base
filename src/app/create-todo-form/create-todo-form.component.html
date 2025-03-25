@@ -1,27 +1,21 @@
 <h1>CREATE TODO FORM</h1>
 <div class="form-wrapper">
-    <form [formGroup]="formTodo" class="form" (ngSubmit)="submitForm()">
+    <form [formGroup]="formTodo" class="form">
         <mat-form-field class="form-input">
             <mat-label>Название задачи</mat-label>
             <input matInput formControlName="title">
-            <mat-error *ngIf="formTodo.controls['title'].invalid && (formTodo.controls['title'].dirty || formTodo.controls['title'].touched)" class="alert">
-                Текст задачи введено неправильно
-            </mat-error>
+            <mat-error>Текст задачи введено неправильно</mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Автор задачи</mat-label>
             <input matInput formControlName="userId">
-            <mat-error *ngIf="formTodo.controls['userId'].invalid && (formTodo.controls['userId'].dirty || formTodo.controls['userId'].touched)" class="alert">
-                Автор введен неправильно
-            </mat-error>
+            <mat-error>Автор введен неправильно</mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Задача завершена?</mat-label>
             <input matInput formControlName="completed">
-            <mat-error *ngIf="formTodo.controls['completed'].invalid && (formTodo.controls['completed'].dirty || formTodo.controls['completed'].touched)" class="alert">
-                Ответ некорректен
-            </mat-error>
+            <mat-error>Ответ некорректен</mat-error>
         </mat-form-field>
-        <button mat-raised-button [disabled]="formTodo.invalid" class="form-btn">Add Todo</button>
+        <button mat-raised-button (click)="submitForm()" [disabled]="formTodo.invalid" class="form-btn">Add Todo</button>
     </form>
 </div>

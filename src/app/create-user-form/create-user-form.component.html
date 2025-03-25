@@ -1,34 +1,30 @@
 <h1>CREATE USER FORM</h1>
 <div class="form-wrapper">
-    <form [formGroup]="formUser" class="form" (ngSubmit)="submitForm()">
+    <form [formGroup]="formUser" class="form">
         <mat-form-field class="form-input">
             <mat-label>Name</mat-label>
             <input matInput formControlName="name">
-            <mat-error *ngIf="formUser.controls['name'].invalid && (formUser.controls['name'].dirty || formUser.controls['name'].touched)">
-                Имя введено неправильно
-            </mat-error>
+            <mat-error *ngIf="formUser.get('name')?.hasError('required')">Поле не должно быть пустым</mat-error>
+            <mat-error *ngIf="formUser.get('name')?.hasError('minlength')">Введите не менее {{ formUser.get('name')?.errors?.['minlength']?.requiredLength }} символов</mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="email">
-            <mat-error *ngIf="formUser.controls['email'].invalid && (formUser.controls['email'].dirty || formUser.controls['email'].touched)">
-                Почта введено неправильно
-            </mat-error>
+            <input type="email" matInput formControlName="email" placeholder="my-email@example.com">
+            <mat-error *ngIf="formUser.get('email')?.hasError('required')">Поле не должно быть пустым</mat-error>
+            <mat-error *ngIf="formUser.get('email')?.hasError('email')">Введите адрес эл.почты правильно</mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Website</mat-label>
             <input matInput formControlName="website">
-            <mat-error *ngIf="formUser.controls['website'].invalid && (formUser.controls['website'].dirty || formUser.controls['website'].touched)">
-                Сайт введен неправильно
-            </mat-error>
+            <mat-error *ngIf="formUser.get('website')?.hasError('required')">Поле не должно быть пустым</mat-error>
+            <mat-error *ngIf="formUser.get('website')?.hasError('minlength')">Введите не менее {{ formUser.get('website')?.errors?.['minlength']?.requiredLength }} символов</mat-error>
         </mat-form-field>
         <mat-form-field class="form-input">
             <mat-label>Company name</mat-label>
             <input matInput formControlName="companyName">
-            <mat-error *ngIf="formUser.controls['companyName'].invalid && (formUser.controls['companyName'].dirty || formUser.controls['companyName'].touched)">
-                Имя компании введено неправильно
-            </mat-error>
+            <mat-error *ngIf="formUser.get('companyName')?.hasError('required')">Поле не должно быть пустым</mat-error>
+            <mat-error *ngIf="formUser.get('companyName')?.hasError('minlength')">Введите не менее {{ formUser.get('companyName')?.errors?.['minlength']?.requiredLength }} символов</mat-error>
         </mat-form-field>
-        <button mat-raised-button [disabled]="formUser.invalid">Add User</button>
+        <button mat-raised-button (click)="submitForm()" [disabled]="formUser.invalid">Add User</button>
     </form>
 </div>
