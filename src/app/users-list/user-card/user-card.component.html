@@ -1,7 +1,21 @@
-<div class="users-card">
+<!-- <div class="users-card">
     <p>{{user.name}}</p>
     <p>{{user.email}}</p>
     <p>{{user.website}}</p>
     <p>{{user.company.name}}</p>
-    <button (click)="onDeleteUser(user.id)" class="users-card-btn">Удалить юзера</button>
-</div>
+    <button (click)="openDeleteUserDialog()" class="users-card-btn">Удалить юзера</button>
+    <button (click)="openEditUserDialog()" class="users-card-btn">Редактировать юзера</button>
+</div> -->
+
+<mat-card class="users-card">
+    <mat-card-content class="users-card__content">
+        <p class="users-card__content-text">{{user.name}}</p>
+        <p class="users-card__content-text">{{user.email}}</p>
+        <p class="users-card__content-text">{{user.website}}</p>
+        <p class="users-card__content-text">{{user.company.name}}</p>
+    </mat-card-content>
+    <mat-card-actions class="mat-card-actions">
+        <button mat-button class="users-card-btn" (click)="openDeleteUserDialog()">Delete</button>
+        <button mat-button class="users-card-btn" (click)="openEditUserDialog()">Edit</button>
+    </mat-card-actions>
+</mat-card>

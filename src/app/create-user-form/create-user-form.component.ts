@@ -5,11 +5,12 @@ import { MatButtonModule } from "@angular/material/button"
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatDialogClose } from "@angular/material/dialog";
 
 @Component({
     selector: 'app-create-user-form',
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf, MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule],
+    imports: [ReactiveFormsModule, NgIf, MatButtonModule, MatInputModule, MatFormFieldModule, FormsModule, MatDialogClose],
     templateUrl: './create-user-form.component.html',
     styleUrl: './create-user-form.component.scss'
 })
@@ -23,8 +24,9 @@ export class CreateUserFormComponent {
         companyName: new FormControl('', [Validators.required, Validators.minLength(3)])
     })
 
-    public submitForm(): void {
-        this.createUser.emit(this.formUser.value)
-        this.formUser.reset()
-    }
+    
+    // public submitForm(): void {
+    //     this.createUser.emit(this.formUser.value)
+    //     this.formUser.reset()
+    // }
 }

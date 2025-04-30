@@ -4,6 +4,9 @@ import { UsersApiService } from "../users-api.service";
 import { UserCardComponent } from "./user-card/user-card.component";
 import { UsersService } from "../users.service";
 import { CreateUserFormComponent } from "../create-user-form/create-user-form.component";
+import { MatDialog } from "@angular/material/dialog";
+import { MatButtonModule } from "@angular/material/button";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 export interface User {
     id: number;
@@ -40,7 +43,7 @@ export interface CreateUser {
 @Component({
     selector: 'app-users-list',
     standalone: true,
-    imports: [NgFor, UserCardComponent, AsyncPipe, CreateUserFormComponent],
+    imports: [NgFor, UserCardComponent, AsyncPipe, CreateUserFormComponent, MatButtonModule],
     templateUrl: './users-list.component.html',
     styleUrl: './users-list.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -49,6 +52,28 @@ export class UsersListComponent {
     readonly usersApiService = inject(UsersApiService);
     readonly usersService = inject(UsersService);
     users = this.usersService.users$;
+
+    readonly dialog = inject(MatDialog)
+    private snackBar = inject(MatSnackBar)
+
+    openDialog(): void {
+        const dialogRef = this.dialog.open(CreateUserFormComponent, {
+            data: {user: this.users}
+        });
+
+        dialogRef.afterClosed().subscribe(editResult => {
+            if (editResult) {
+                this.createUser(editResult)
+                this.snackBar.open('Пользователь создан', 'OK', {
+                    duration: 5000
+                })
+            } else {
+                this.snackBar.open('Отмена создания пользователя', 'OK', {
+                    duration: 5000
+                })
+            }
+        });
+    }
 
     constructor() {
         this.usersApiService.getUsers().subscribe(
@@ -66,6 +91,15 @@ export class UsersListComponent {
             website: formData.website,
             company: {
                 name: formData.companyName
+            }
+        })
+    }
+
+    editUser(user: any) {
+        this.usersService.editUser({
+            ...user,
+            company: {
+                name: user.companyName
             }
         })
     }

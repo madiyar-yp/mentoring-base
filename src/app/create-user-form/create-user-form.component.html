@@ -1,4 +1,3 @@
-<h1>CREATE USER FORM</h1>
 <div class="form-wrapper">
     <form [formGroup]="formUser" class="form">
         <mat-form-field class="form-input">
@@ -25,6 +24,6 @@
             <mat-error *ngIf="formUser.get('companyName')?.hasError('required')">Поле не должно быть пустым</mat-error>
             <mat-error *ngIf="formUser.get('companyName')?.hasError('minlength')">Введите не менее {{ formUser.get('companyName')?.errors?.['minlength']?.requiredLength }} символов</mat-error>
         </mat-form-field>
-        <button mat-raised-button (click)="submitForm()" [disabled]="formUser.invalid">Add User</button>
+        <button mat-raised-button [disabled]="formUser.invalid" [mat-dialog-close]="formUser.value">Add User</button>
     </form>
 </div>
