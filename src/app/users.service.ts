@@ -7,6 +7,10 @@ export class UsersService {
     private readonly usersSubject$ = new BehaviorSubject<User[]>([])
     public readonly users$ = this.usersSubject$.asObservable()
 
+    getCurrentUsers(): User[] {
+        return this.usersSubject$.getValue();
+    }
+
     setUsers(users: User[]) {
         this.usersSubject$.next(users)
     }

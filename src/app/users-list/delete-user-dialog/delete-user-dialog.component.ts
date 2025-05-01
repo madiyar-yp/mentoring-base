@@ -11,9 +11,4 @@ import { User } from "../users-list.component";
 })
 export class DeleteUserDialogComponent {
     public readonly data = inject<User>(MAT_DIALOG_DATA)
-    readonly dialogRef = inject(MatDialogRef<DeleteUserDialogComponent>)
-
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
 }

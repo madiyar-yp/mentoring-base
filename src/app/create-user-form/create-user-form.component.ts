@@ -23,10 +23,4 @@ export class CreateUserFormComponent {
         website: new FormControl('', [Validators.required, Validators.minLength(3)]),
         companyName: new FormControl('', [Validators.required, Validators.minLength(3)])
     })
-
-    
-    // public submitForm(): void {
-    //     this.createUser.emit(this.formUser.value)
-    //     this.formUser.reset()
-    // }
 }

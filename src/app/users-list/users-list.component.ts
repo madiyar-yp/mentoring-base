@@ -61,9 +61,9 @@ export class UsersListComponent {
             data: {user: this.users}
         });
 
-        dialogRef.afterClosed().subscribe(editResult => {
-            if (editResult) {
-                this.createUser(editResult)
+        dialogRef.afterClosed().subscribe((result: CreateUser | undefined) => {
+            if (result) {
+                this.createUser(result)
                 this.snackBar.open('Пользователь создан', 'OK', {
                     duration: 5000
                 })
@@ -95,11 +95,23 @@ export class UsersListComponent {
         })
     }
 
-    editUser(user: any) {
+    editUser(updatedData: CreateUser) {
+        const currentUsers = this.usersService.getCurrentUsers()
+        const originalUser = currentUsers.find((user: User) => user.id === updatedData.id)
+        
+        if (!originalUser) {
+            console.error('Пользователь не найден:', updatedData.id)
+            return;
+        }
+
         this.usersService.editUser({
-            ...user,
+            ...originalUser,
+            name: updatedData.name,
+            email: updatedData.email,
+            website: updatedData.website,
             company: {
-                name: user.companyName
+                ...originalUser.company,
+                name: updatedData.companyName
             }
         })
     }
